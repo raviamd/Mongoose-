@@ -1,0 +1,15 @@
+const mongoose = require('mongoose');
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/my_database', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Check if the connection is successful
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log('Connected to MongoDB');
+  // You can start interacting with your MongoDB here
+});
